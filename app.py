@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_mail import Mail, Message
 from os import environ as env
 
@@ -21,9 +21,9 @@ def home():
 @app.route('/sendMail')
 def sendMail():
     
-    msg = Message('Hello', sender='gpt.sahaj28@gmail.com', recipients=['gpt.sahaj28@gmail.com'])
+    msg = Message('Hello', sender='gpt.sahaj28@gmail.com', recipients=['riciwa9615@zaelmo.com'])
     msg.body = "Hi there, A mail from flask mailand this message is send from environt varibale "
-
+    msg.html = render_template('msg.html')
     mail.send(msg)
 
     return "mail Send"
